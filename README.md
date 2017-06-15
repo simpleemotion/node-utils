@@ -1,2 +1,2 @@
 # node-utils
-Utilities for Simple Emotion Systems
+General Utilities for Simple Emotion Systems
