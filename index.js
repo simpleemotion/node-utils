@@ -384,10 +384,10 @@ function noop() {
 
 function validateObject( data, structure ) {
 
+  const query = {};
+
   // Ensure data and structure are objects
   if ( data !== null && structure !== null && typeof data === 'object' && typeof structure === 'object' ) {
-
-    const query = {};
 
     // Loop through all base properties in structure
     for ( const p in structure ) {
