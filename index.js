@@ -52,7 +52,7 @@ function api( client, API ) {
 
       // Owner checking is not appropriate for workers or any role higher than user
       if ( Constants.roles[ client.role.type ] > Constants.roles.user ||
-        Constants.roles[ client.role.type ] === Constants.roles.worker ) {
+           Constants.roles[ client.role.type ] === Constants.roles.worker ) {
 
         // Ensure client has access to each audio
         (function nextAudio( i, n ) {
@@ -160,7 +160,7 @@ function api( client, API ) {
 
       // Owner checking is not appropriate for workers or any role higher than user
       if ( Constants.roles[ client.role.type ] > Constants.roles.user ||
-        Constants.roles[ client.role.type ] === Constants.roles.worker ) {
+           Constants.roles[ client.role.type ] === Constants.roles.worker ) {
         return fn.apply( null, args );
       }
 
@@ -280,9 +280,9 @@ function api( client, API ) {
 
 function trace( fn ) {
 
-  var err = new Error( 'If you are seeing this error message, something is broken!' );
+  // var err = new Error( 'If you are seeing this error message, something is broken!' );
+  // var filter = err.stack.split( '\n' ).slice( 2 );
   var tmp = [];
-  var filter = err.stack.split( '\n' ).slice( 2 );
 
   return function () {
 
@@ -290,9 +290,9 @@ function trace( fn ) {
       return fn.apply( null, arguments );
     }
 
-    filter.forEach( tmp.push.bind( tmp ) );
+    // filter.forEach( e => tmp.push( e ) );
     arguments[ 0 ] = buildError( arguments[ 0 ] );
-    arguments[ 0 ].stack.reverse().forEach( tmp.unshift.bind( tmp ) );
+    arguments[ 0 ].stack.reverse().forEach( i => tmp.unshift( i ) );
     arguments[ 0 ].stack = tmp;
 
     fn.apply( null, arguments );
@@ -460,7 +460,7 @@ function validateObject( data, structure ) {
 
     // If a property type is defined, ensure the data matches
     if ( !prop.type || typeof data[ p ] === ( typeof prop.type === 'object' ? 'object' : prop.type ) ||
-      Array.isArray( prop.type ) ) {
+         Array.isArray( prop.type ) ) {
 
       if ( Array.isArray( prop.type ) ) {
 
@@ -478,7 +478,7 @@ function validateObject( data, structure ) {
                 break;
               }
               else if ( typeof prop.type[ i ] === 'object' && !Array.isArray( prop.type[ i ] ) &&
-                ( data[ p ] = validateObject( data[ p ], prop.type[ i ] ) ) ) {
+                        ( data[ p ] = validateObject( data[ p ], prop.type[ i ] ) ) ) {
                 found = true;
                 break;
               }
@@ -760,13 +760,13 @@ function checkRole( role, allowed ) {
 
     // Within range
     if ( ( 'lt' in allowed ? allowed.lt : 'lte' in allowed ? allowed.lte : false ) >=
-      ( 'gt' in allowed ? allowed.gt : 'gte' in allowed ? allowed.gte : false ) ) {
+         ( 'gt' in allowed ? allowed.gt : 'gte' in allowed ? allowed.gte : false ) ) {
       return ( role < allowed.lt || role <= allowed.lte ) && ( role > allowed.gt || role >= allowed.gte );
     }
 
     // Outside range
     if ( ( 'lt' in allowed ? allowed.lt : 'lte' in allowed ? allowed.lte : true ) <
-      ( 'gt' in allowed ? allowed.gt : 'gte' in allowed ? allowed.gte : false ) ) {
+         ( 'gt' in allowed ? allowed.gt : 'gte' in allowed ? allowed.gte : false ) ) {
       return ( role < allowed.lt || role <= allowed.lte ) || ( role > allowed.gt || role >= allowed.gte );
     }
 
@@ -811,6 +811,6 @@ function checkRole( role, allowed ) {
 
 function redact( data ) {
   return JSON.parse(
-    JSON.stringify( data, ( k, v ) => REDACTED_FIELDS.some( f => k.indexOf( f ) !== -1 ) ? 'REDACTED' : v )
-  );
+    JSON.stringify( data, ( k, v ) => REDACTED_FIELDS.some( f => k.indexOf( f ) !== -1 ) ? 'REDACTED' : v
+    ) );
 }
