@@ -53,7 +53,8 @@ module.exports = {
     ],
     owner: [
       'user',
-      'organization'
+      'organization',
+      'service'
     ]
   },
   roles: {
