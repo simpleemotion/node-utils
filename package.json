@@ -21,7 +21,7 @@
     "test-circle": "env branch=test mocha test/index.js --reporter mocha-junit-reporter"
   },
   "engines": {
-    "node": "^8.1.1"
+    "node": "^8.1.2"
   },
   "dependencies": {
     "deepmerge": "^1.4.4",

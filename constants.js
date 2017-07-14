@@ -19,7 +19,7 @@ module.exports = {
       'storage.features.added',
       'storage.features.removed',
       'storage.features.renamed',
-      'storage.folder.add',
+      'storage.folder.added',
       'storage.model.added',
       'storage.model.removed',
       'storage.model.renamed'
