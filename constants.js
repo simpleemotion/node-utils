@@ -55,6 +55,9 @@ module.exports = {
       'user',
       'organization',
       'service'
+    ],
+    entity: [
+      'storage.audio'
     ]
   },
   roles: {
