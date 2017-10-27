@@ -57,7 +57,7 @@ module.exports = {
       'service'
     ],
     entity: [
-      'storage.audio'
+      'type.simpleapis.com/storage.audio'
     ]
   },
   roles: {
