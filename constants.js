@@ -56,6 +56,11 @@ module.exports = {
       'organization',
       'service'
     ],
+    creator: [
+      'user',
+      'organization',
+      'operation'
+    ],
     entity: [
       'type.simpleapis.com/storage.audio'
     ]
