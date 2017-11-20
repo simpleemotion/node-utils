@@ -63,7 +63,8 @@ module.exports = {
     ],
     entity: [
       'type.simpleapis.com/storage.audio',
-      'type.simpleapis.com/storage.audio.recording'
+      'type.simpleapis.com/storage.audio.recording',
+      'type.simpleapis.com/storage.document'
     ]
   },
   roles: {
