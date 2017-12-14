@@ -13,7 +13,8 @@ const objectpath = require( 'object-path' );
 const REDACTED_FIELDS = [
   'password',
   'private',
-  'secret'
+  'secret',
+  'token'
 ];
 
 module.exports = {
