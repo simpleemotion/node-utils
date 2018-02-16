@@ -30,7 +30,8 @@ module.exports = {
       PASSWORD: 'password',
       CLIENT_CREDENTIALS: 'client_credentials',
       REFRESH_TOKEN: 'refresh_token',
-      TWO_FACTOR: 'two_factor'
+      TWO_FACTOR: 'two_factor',
+      VERIFICATION_CODE: 'verification_code'
     },
     operation: [
       'compute-contact-metrics',
