@@ -53,14 +53,26 @@ function api( client, API ) {
 
       // Owner checking is not appropriate for workers or any role higher than user
       if ( Constants.roles[ client.role.type ] > Constants.roles.user ||
-           Constants.roles[ client.role.type ] === Constants.roles.worker ) {
+        Constants.roles[ client.role.type ] === Constants.roles.worker ) {
 
         // Ensure client has access to each audio
-        (function nextAudio( i, n ) {
+        ( function nextAudio( i, n ) {
 
           if ( i >= n ) {
             return fn.apply( null, args );
           }
+
+          console.log( 'oh fuck 111111111111' );
+          console.log( 'oh fuck 111111111111' );
+          console.log( 'oh fuck 111111111111' );
+          console.log( deepmerge(
+            data.audio[ i ] || {},
+            {
+              states: {
+                removed: false
+              }
+            }
+          ) );
 
           API.storage.v2.audio.get(
             {
@@ -91,7 +103,7 @@ function api( client, API ) {
             }
           );
 
-        })( 0, data.audio.length );
+        } )( 0, data.audio.length );
 
       }
       else {
@@ -104,11 +116,29 @@ function api( client, API ) {
           }
 
           // Ensure client has access to each audio
-          (function nextAudio( i, n ) {
+          ( function nextAudio( i, n ) {
 
             if ( i >= n ) {
               return fn.apply( null, args );
             }
+
+            console.log( 'oh fuck 2222222222222' );
+            console.log( 'oh fuck 2222222222222' );
+            console.log( 'oh fuck 2222222222222' );
+            console.log( deepmerge(
+              data.audio[ i ] || {},
+              {
+                owner: associated_owners,
+                states: {
+                  removed: false
+                }
+              },
+              {
+                arrayMerge: function ( dst, src ) {
+                  return src;
+                }
+              }
+            ) );
 
             API.storage.v2.audio.get(
               {
@@ -145,7 +175,7 @@ function api( client, API ) {
               }
             );
 
-          })( 0, data.audio.length );
+          } )( 0, data.audio.length );
 
         } );
 
@@ -161,7 +191,7 @@ function api( client, API ) {
 
       // Owner checking is not appropriate for workers or any role higher than user
       if ( Constants.roles[ client.role.type ] > Constants.roles.user ||
-           Constants.roles[ client.role.type ] === Constants.roles.worker ) {
+        Constants.roles[ client.role.type ] === Constants.roles.worker ) {
         return fn.apply( null, args );
       }
 
@@ -461,7 +491,7 @@ function validateObject( data, structure ) {
 
     // If a property type is defined, ensure the data matches
     if ( !prop.type || typeof data[ p ] === ( typeof prop.type === 'object' ? 'object' : prop.type ) ||
-         Array.isArray( prop.type ) ) {
+      Array.isArray( prop.type ) ) {
 
       if ( Array.isArray( prop.type ) ) {
 
@@ -479,7 +509,7 @@ function validateObject( data, structure ) {
                 break;
               }
               else if ( typeof prop.type[ i ] === 'object' && !Array.isArray( prop.type[ i ] ) &&
-                        ( data[ p ] = validateObject( data[ p ], prop.type[ i ] ) ) ) {
+                ( data[ p ] = validateObject( data[ p ], prop.type[ i ] ) ) ) {
                 found = true;
                 break;
               }
@@ -761,13 +791,13 @@ function checkRole( role, allowed ) {
 
     // Within range
     if ( ( 'lt' in allowed ? allowed.lt : 'lte' in allowed ? allowed.lte : false ) >=
-         ( 'gt' in allowed ? allowed.gt : 'gte' in allowed ? allowed.gte : false ) ) {
+      ( 'gt' in allowed ? allowed.gt : 'gte' in allowed ? allowed.gte : false ) ) {
       return ( role < allowed.lt || role <= allowed.lte ) && ( role > allowed.gt || role >= allowed.gte );
     }
 
     // Outside range
     if ( ( 'lt' in allowed ? allowed.lt : 'lte' in allowed ? allowed.lte : true ) <
-         ( 'gt' in allowed ? allowed.gt : 'gte' in allowed ? allowed.gte : false ) ) {
+      ( 'gt' in allowed ? allowed.gt : 'gte' in allowed ? allowed.gte : false ) ) {
       return ( role < allowed.lt || role <= allowed.lte ) || ( role > allowed.gt || role >= allowed.gte );
     }
 
