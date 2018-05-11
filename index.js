@@ -62,7 +62,7 @@ function api( client, API ) {
             return fn.apply( null, args );
           }
 
-          API.storage.audio.get(
+          API.storage.v2.audio.get(
             {
               audio: deepmerge(
                 data.audio[ i ] || {},
@@ -110,7 +110,7 @@ function api( client, API ) {
               return fn.apply( null, args );
             }
 
-            API.storage.audio.get(
+            API.storage.v2.audio.get(
               {
                 audio: deepmerge(
                   data.audio[ i ] || {},
