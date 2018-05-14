@@ -62,18 +62,6 @@ function api( client, API ) {
             return fn.apply( null, args );
           }
 
-          console.log( 'oh fuck 111111111111' );
-          console.log( 'oh fuck 111111111111' );
-          console.log( 'oh fuck 111111111111' );
-          console.log( deepmerge(
-            data.audio[ i ] || {},
-            {
-              states: {
-                removed: false
-              }
-            }
-          ) );
-
           API.storage.v2.audio.get(
             {
               audio: deepmerge(
@@ -121,24 +109,6 @@ function api( client, API ) {
             if ( i >= n ) {
               return fn.apply( null, args );
             }
-
-            console.log( 'oh fuck 2222222222222' );
-            console.log( 'oh fuck 2222222222222' );
-            console.log( 'oh fuck 2222222222222' );
-            console.log( deepmerge(
-              data.audio[ i ] || {},
-              {
-                owner: associated_owners,
-                states: {
-                  removed: false
-                }
-              },
-              {
-                arrayMerge: function ( dst, src ) {
-                  return src;
-                }
-              }
-            ) );
 
             API.storage.v2.audio.get(
               {
