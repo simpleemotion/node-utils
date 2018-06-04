@@ -50,7 +50,8 @@ module.exports = {
       'train-voice-model',
       'transcribe-diarized-speech',
       'transcribe-raw-speech',
-      'transload-audio'
+      'transload-audio',
+      'classify-transcript'
     ],
     owner: [
       'user',
