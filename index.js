@@ -186,8 +186,10 @@ function api( client, API ) {
         var owners = entity.owner;
         entity.owner = [];
 
+        let single = false;
         // If owner is not an array, turn it into a singleton array
         if ( !Array.isArray( owners ) ) {
+          single = true;
           owners = [ owners ];
         }
 
@@ -232,6 +234,10 @@ function api( client, API ) {
               null
             );
           }
+        }
+
+        if ( single ) {
+          entity.owner = owners[ 0 ];
         }
 
         fn.apply( null, args );
