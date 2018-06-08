@@ -4,14 +4,14 @@
   "version": "2.0.2",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SimpleEmotion/node-utils.git"
+    "url": "git+https://github.com/simpleemotion/node-utils.git"
   },
   "author": "Akash Krishnan <ak@aakay.net>",
   "bugs": {
-    "url": "https://github.com/SimpleEmotion/node-utils/issues"
+    "url": "https://github.com/simpleemotion/node-utils/issues"
   },
-  "homepage": "https://github.com/SimpleEmotion/node-utils",
-  "main": "index.js",
+  "homepage": "https://github.com/simpleemotion/node-utils",
+  "main": "lib/index.js",
   "scripts": {
     "eslint": "eslint",
     "mocha": "mocha",
@@ -21,20 +21,18 @@
     "test-circle": "env branch=test mocha test/index.js --reporter mocha-junit-reporter"
   },
   "engines": {
-    "node": "^8.1.2"
+    "node": "^10.4.0"
   },
   "dependencies": {
-    "deepmerge": "^1.4.4",
+    "deepmerge": "^1.5.2",
     "ip": "^1.1.5",
-    "ip-address": "^5.8.8",
-    "mongodb": "^2.2.29",
-    "object-path": "^0.11.4"
+    "ip-address": "^5.8.9"
   },
   "devDependencies": {
     "@simple-emotion/eslint-config": "^0.3.3",
-    "eslint": "^3.19.0",
+    "eslint": "^4.19.1",
     "istanbul": "^0.4.5",
-    "mocha": "^3.4.2",
-    "mocha-junit-reporter": "^1.13.0"
+    "mocha": "^5.2.0",
+    "mocha-junit-reporter": "^1.17.0"
   }
 }
